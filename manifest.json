@@ -1,0 +1,12 @@
+{
+    "manifest_version": 2,
+    "name": "Leetcode relative line number",
+    "description": "Change line numbers on leetcode editor to the line number that's relative to the current active line",
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "matches": ["*://leetcode.com/*"],
+            "js": ["relative.js"]
+        }
+    ]
+}
