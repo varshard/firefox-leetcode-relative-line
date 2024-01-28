@@ -16,10 +16,15 @@ function setRelativeLineNumber() {
     }
 }
 
-document.addEventListener('click', setRelativeLineNumber)
-document.addEventListener('keyup', (e) => {
-    const key = e.key
-    if (key === 'j' || key == 'k' || key == 'd' || key == 'o' || key == 'O' || key == 'g' || key == 'G') {
-        setRelativeLineNumber()
+const observer = new MutationObserver((mutationList) => {
+    for (const mutation of mutationList) {
+        if (mutation.type === 'childList') {
+            setRelativeLineNumber()
+        }
     }
+})
+
+observer.observe(document.getElementById('editor'), {
+    childList: true,
+    subtree: true
 })
